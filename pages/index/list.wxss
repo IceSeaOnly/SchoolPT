@@ -1,0 +1,6 @@
+/* pages/index/list.wxss */
+.goods-item{width: 50%;display: inline-block;margin-top: 6rpx;padding-bottom: 20rpx;}
+.goods-item image{width: 99%;}
+.goods-title{font-size: 22rpx;line-height: 26rpx;padding: 24rpx}
+.goods-price{color: #fe0000;font-size: 32rpx;margin-left: 24rpx;}
+.goods-sale{margin-right: 24rpx;color: #a4a4a4;}

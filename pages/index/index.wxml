@@ -1,0 +1,91 @@
+<!--pages/index/index.wxml-->
+<import src="/pages/template/toast.wxml"/>
+<import src="/pages/template/loading.wxml"/>
+
+<scroll-view scroll-x="true" class="scroll-view-x" scroll-with-animation="true" scroll-left="{{scrollLeft}}">
+  <view class="scroll-view-item {{cid==0 ? 'on' : ''}}" bindtap="switchNav" data-cid="0">首页</view>
+  <block wx:for="{{category}}" wx:key="unique">
+    <view class="scroll-view-item {{cid==item.id ? 'on' : ''}}" bindtap="switchNav" data-cid="{{item.id}}">{{item.name}}</view>
+  </block>
+</scroll-view>
+
+<scroll-view scroll-y="true" class="scroll-view-y" scroll-with-animation="true" scroll-top="{{scrollTop}}" lower-threshold="50" bindscrolltolower="scrolltolower" style="height: {{windowHeight-42}}px;">
+
+<block wx:if="{{cid==0}}">
+  <swiper autoplay="true" circular="true" indicator-dots="true" indicator-color="#fff" indicator-active-color="#f00">   
+  <block wx:for="{{advert}}" wx:key="unique">
+    <swiper-item bindtap="{{item.type==1?'showTopic':'showGoodsDetial'}}" data-id="{{item.typeVal}}">  
+        <image src="{{item.img}}" mode="aspectFill"/>  
+    </swiper-item>
+  </block>
+  </swiper>
+  <!-- <view class="row topic-group">
+    <view class="topic-item" bindtap="showTopic" data-id="">
+      <view class="icon"><image src=""></image></view>
+      <view>品牌特惠</view>
+    </view>
+    <view class="topic-item">
+      <view class="icon"><image src=""></image></view>
+      <view>品牌特惠</view>
+    </view>
+    <view class="topic-item">
+      <view class="icon"><image src=""></image></view>
+      <view>品牌特惠</view>
+    </view>
+    <view class="topic-item">
+      <view class="icon"><image src=""></image></view>
+      <view>品牌特惠</view>
+    </view>
+  </view>  -->
+  <view class="goods-group" style="margin-top: 4rpx;">
+    <block wx:for="{{goodsList}}" wx:key="unique">
+      <view class="goods-item pull-left" bindtap="showGoodsDetial" data-id="{{item.id}}">
+        <image src="{{item.img}}" mode="aspectFill"></image>
+        <view class="goods-title">{{item.name}}</view>
+        <view class="pull-left" style="width: 100%;padding: 17px 12px;">
+          <view class="pull-left" style="line-height: 32px;">
+            <text class="goods-price">¥{{item.gprice}}</text>
+             <text class="goods-sale">已团{{item.saleNum}}{{item.unit}}</text> 
+            <text class="goods-mprice">¥{{item.mprice}}</text>
+          </view>
+          <view class="pull-right" style="margin-right: 24px;">
+          <view wx:if="{{item.groupList.length>0}}" class="group-userImg">
+          <block wx:for="{{item.groupList}}" wx:key="unique" wx:for-index="idx" wx:for-item="val">
+            <image src="{{val.avatarUrl}}" mode="" class="{{idx==1?'two':''}}"></image>
+          </block>
+          </view>
+          <view class="btn text-center">马上拿下 <image src="/resource/left.png"></image></view>
+          </view>
+        </view>
+      </view>
+      <view class="clearfix"></view>
+    </block>
+  </view>
+
+</block>
+
+<view wx:else>
+  <view class="child-group bg-fff">  
+    <block wx:for="{{childCate}}" wx:key="unique">
+    <view  class="child-cate-item mt-20" bindtap="showList" data-id="{{item.id}}">
+      <view class="icon"><image src="{{item.img}}" mode="aspectFill"></image></view>
+      <view class="child-cate-name mt-20">{{item.name}}</view>
+    </view>
+  </block>
+  </view>
+  <view class="goods-group" style="margin-top: 14rpx;">
+    <view wx:for="{{goodsList}}" wx:key="unique" class="goods-item-2 bg-fff" bindtap="showGoodsDetial" data-id="{{item.id}}">
+      <image src="{{item.img}}" mode="aspectFit"></image>
+      <view class="goods-title">{{item.name}}</view>
+      <view style="padding-bottom: 8rpx;">
+        <view class="goods-price">
+          <text style="">¥</text>
+          {{item.gprice}}
+        </view>
+        <text class="goods-sale pull-right">已团{{item.saleNum}}{{item.unit}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+ <template is="loading" data="{{loading:loading}}"/> 
+</scroll-view>

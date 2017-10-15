@@ -1,0 +1,28 @@
+/* pages/order/index.wxss */
+.scroll-view-x{background-color: #fff;white-space: nowrap;color: #5d5d5d;font-size: 24rpx;}
+.scroll-view-x .scroll-view-item{display:inline-block;margin: 0 44rpx;line-height: 70rpx;}
+.scroll-view-y{border-top:1px solid #ccc;font-size: 24rpx;}
+
+.order-goods{width: 100%;background-color: #f8f8f8;}
+.group-msg{line-height: 72rpx;width: 100%;}
+.order-num{margin-left: 24rpx;color: #5d5d5d;}
+.order-status{color: #fe0000;margin-right: 24rpx;}
+
+.goods-img {padding-top: 14rpx;padding-left: 24rpx;}
+.goods-img image {width: 140rpx;height: 140rpx;}
+.goods-info{width: 64%;padding: 20rpx 20rpx 0 20rpx;}
+.goods-title{width: 75%;line-height: 28rpx;height:56rpx;overflow: hidden;font-size: 24rpx;}
+.goods-price{padding-top: 28rpx;}
+.goods-prop{color: #a4a4a4;font-size: 20rpx;margin-top: 26rpx;width: 100%}
+.prop-item{width: 75%;}
+.order-price{width: 100%;text-align: right;line-height: 72rpx;font-size: 22rpx;color: #5d5d5d;}
+.order-price>text{padding-right: 24rpx;color: #fe0000;font-weight: bold;}
+.user-option{border-top:1px solid #eee;width: 100%;text-align: right;line-height: 72rpx;}
+.btn{border-radius: 10rpx;line-height: 52rpx;text-align: center;padding: 0 24rpx;display: inline-block;margin-left: 18rpx;font-size: 22rpx;}
+
+.btn-danger{background-color: red;color: #fff;}
+.btn-primary{background-color:#5cb85c;color:#fff;}
+
+.no-orders{position: absolute;width: 100%}
+.no-orders image{width: 300rpx;height: 300rpx;}
+.no-orders>view{margin-top: 240rpx;}

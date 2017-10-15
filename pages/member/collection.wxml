@@ -1,0 +1,23 @@
+<!--pages/member/collection.wxml-->
+<scroll-view scroll-y="true" class="scroll-view-y" scroll-with-animation="true" scroll-top="{{scrollTop}}" lower-threshold="50" bindscrolltolower="scrolltolower" style="height: {{windowHeight}}px;">
+
+<view wx:for="{{goodsList}}" wx:key="unique" class="goods-item bg-fff">
+
+	<view class="goods-img pull-left">
+		<image src="{{item.img}}" mode="aspectFill"></image>
+	</view>
+
+		<view class="{{index==0?'goods-info-1':'goods-info'}} pull-right">
+		<view class='goods-title'>{{item.name}}</view>
+		<view class='goods-num'>{{item.groupNum}}人团·已团{{item.saleNum}}{{item.unit}}</view>
+		<view class=''>
+			<view class="goods-price pull-left">¥{{item.price}}</view>
+			<view class="pull-right btn" bindtap="goToGroup" data-id="{{item.gid}}">一键开团</view>
+			<view class="cancel-collection pull-right" bindtap="cancelCollection" data-id="{{item.gid}}">取消收藏</view>
+		</view>
+	</view>
+	<view class="clearfix"></view>
+
+</view>
+
+</scroll-view>

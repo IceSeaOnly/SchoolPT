@@ -1,0 +1,158 @@
+<!--pages/goods/detail.wxml-->
+<import src="/pages/template/toast.wxml" />
+
+<scroll-view scroll-y="true" class="scroll-view-y" scroll-with-animation="true" scroll-top="{{scrollTop}}" lower-threshold="50" bindscrolltolower="scrolltolower" style="height: {{windowHeight-50}}px;">
+
+  <swiper autoplay="true" circular="true">
+    <block wx:for="{{goodsDetail.album}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item}}" mode="aspectFill"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="goods-item bg-fff">
+    <view class="pull-left g-left">
+      <text class="goods-price">¥{{goodsDetail.gprice}}</text>
+      <text class="origin-price">¥{{goodsDetail.mprice}}</text>
+      <view class="goods-sale">
+        已团{{goodsDetail.saleNum}}{{goodsDetail.unit}}·{{goodsDetail.groupNum}}人团
+      </view>
+    </view>
+    <view class="icon-share text-center pull-right">
+      <image src='/resource/share.png'></image>
+      <view class="share-text">分享</view>
+    </view>
+    <button open-type="share" class="share-btn pull-right"></button>
+    <view class="clearfix"></view>
+    <view class="goods-title bg-fff">{{goodsDetail.name}}</view>
+    <view class="goods-brief bg-fff">{{goodsDetail.brief}}</view>
+  </view>
+
+  <view class="server" bindtap="showServer" data-statu="open">
+    <image src="/resource/yes.png"></image>
+    <text>全场包邮</text>
+    <image src="/resource/yes.png"></image>
+    <text>7天退换</text>
+    <image src="/resource/yes.png"></image>
+    <text>全场48小时发货</text>
+    <image src="/resource/yes.png"></image>
+    <text>假一赔十</text>
+    <view class="pull-right right">
+      <image src="/resource/left-b.png"></image>
+    </view>
+  </view>
+  <import src="/wxParse/wxParse.wxml" />
+
+  <view wx:if="{{groupList.length>0}}">
+    <view class="bg-fff mt-20 p-20">小伙伴正在开团</view>
+    <block wx:for="{{groupList}}" wx:key="unique">
+      <view class="pull-left group-item bg-fff" bindtap="joinGroup" data-id="{{item.oid}}">
+        <view class="pull-left user-img">
+          <image src="{{item.avatarUrl}}" mode="aspectFill"></image>
+        </view>
+        <view class="group-user pull-left">
+          <view class="user-name">{{item.nickName}}</view>
+          <view class="left-time">还差{{goodsDetail.groupNum-item.leftNum}}人，剩余{{item.leftTimeStr}}</view>
+        </view>
+        <view class="pull-right btn">去参团</view>
+      </view>
+      <view class="clearfix"></view>
+    </block>
+  </view>
+
+  <view class="goods-desc bg-fff">
+    <view>商品详情</view>
+  </view>
+  <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:goodsIntro.nodes}}" />
+  </view>
+
+  <!-- <view class="recommend">
+	<view class="recommend-title">
+		<image src="/resource/recommend.png"></image><text>为你推荐</text>
+	</view>
+</view> -->
+
+</scroll-view>
+
+<!-- <view class="footer row pull-left">
+	<view class="index pull-left" bindtap="goHome">
+		<image src="/resource/index.png" mode="aspectFill"></image>
+		<view class="mt-12">首页</view>
+	</view>
+	<view class="collect pull-left" bindtap="collect" data-status="{{is_collect}}">
+		<image src="{{is_collect ? '/resource/collected.png':'/resource/collect.png'}}" mode="aspectFill"></image>
+		<view class="mt-12">收藏</view>
+	</view>
+	<view class="buy-group pull-right" bindtap="showModal" data-statu="open" data-type="group">
+		<view class="mt-20">¥{{goodsDetail.gprice}}</view>
+		<view class="mt-8">一键开团</view>
+	</view>
+	<view class="buy-only pull-right" bindtap="showModal" data-statu="open" data-type="only">
+		<view class="mt-20">¥{{goodsDetail.price}}</view>
+		<view class="mt-8">单独购买</view>
+	</view>
+</view>  -->
+<view class="footer">
+  <view class="index" bindtap="goHome">
+    <image src="/resource/index.png" mode="aspectFill"></image>
+    <view class="mt-10">首页</view>
+  </view>
+  <view class="collect" bindtap="collect" data-status="{{is_collect}}">
+    <image src="{{is_collect ? '/resource/collected.png':'/resource/collect.png'}}" mode="aspectFill"></image>
+    <view class="mt-10">收藏</view>
+  </view>
+  <view class="buy-group pull-right" bindtap="showModal" data-statu="open" data-type="group">
+    <view>¥{{goodsDetail.gprice}}</view>
+    <view class="mt-10">一键开团</view>
+  </view>
+  <view class="buy-only pull-right" bindtap="showModal" data-statu="open" data-type="only">
+    <view>¥{{goodsDetail.price}}</view>
+    <view class="mt-10">单独购买</view>
+  </view>
+</view>
+
+<view class="drawer_screen" bindtap="showModal" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<view class="modal" animation="{{animationData}}" wx:if="{{showModalStatus}}">
+  <text class="modal-close pull-right" bindtap="showModal" data-statu="close">x</text>
+  <view class="clearfix"></view>
+  <view class="modal-title">
+    <view class="goods-img">
+      <image src="{{goodsDetail.img}}" mode="aspectFit"></image>
+    </view>
+    <view class="goods-price">¥{{goodsPrice*num}}</view>
+  </view>
+  <view class="modal-body">
+    <view class="prop" wx:for="{{goodsDetail.property}}" wx:key="unique" wx:for-index="index">
+      <view class="prop-name">{{item.name}}</view>
+      <block wx:for="{{item.value}}" wx:key="unique" wx:for-item="prop" wx:for-index="ind">
+        <text class="{{propValue[index].pname==item.name&&propValue[index].name==prop ?'selected':''}}" data-pid="{{index}}" data-pname="{{item.name}}" data-name="{{prop}}" bindtap="selectProp">{{prop}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="number pull-left">
+    <text class="pull-left" style="padding-left: 24rpx;">数量</text>
+    <text class="plus pull-right" bindtap="plus">十</text>
+    <text class="buy-value pull-right">{{num}}</text>
+    <text class="minus pull-right" bindtap="minus">一</text>
+  </view>
+  <view class="modal-footer">
+    <view class="btn" bindtap="goToBuy">确定</view>
+  </view>
+</view>
+
+<view class="drawer_screen" bindtap="showServer" data-statu="close" wx:if="{{showServer}}"></view>
+<view class="modal" animation="{{animationData}}" wx:if="{{showServer}}">
+  <text class="modal-close pull-right" bindtap="showModal" data-statu="close">x</text>
+  <view class="clearfix"></view>
+  <view class="modal-title">
+    <view class="text-center">
+      <text class="">服务说明</text>
+    </view>
+  </view>
+  <view class="modal-body">
+
+  </view>
+</view>
+<template is="toast" data="{{toast:toast}}" />

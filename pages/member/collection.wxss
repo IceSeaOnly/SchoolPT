@@ -1,0 +1,10 @@
+/* pages/member/collection.wxss */
+.goods-img {padding: 10rpx 0rpx 10rpx 24rpx;}
+.goods-img image{width: 240rpx;height: 238rpx;}
+.goods-info{width: 59%;border-top: 1px solid #cccccc;padding: 30rpx 24rpx 26rpx 10rpx;background-color: #fff;}
+.goods-info-1{width: 59%;border-top: 0;padding: 30rpx 24rpx 26rpx 10rpx;background-color: #fff;}
+.goods-title {line-height: 34rpx;font-size: 28rpx;height: 68rpx;overflow: hidden;}
+.goods-num{font-size: 22rpx;margin-top: 24rpx;margin-bottom: 35rpx;}
+.goods-price{color: #fe0000;font-size: 32rpx;line-height: 58rpx;}
+.btn{background-color: #fe0000;color:#fff;border-radius: 10rpx;margin-left: 20rpx;line-height: 58rpx;width: 150rpx;font-size: 28rpx;text-align: center;}
+.cancel-collection{line-height: 58rpx;font-size: 22rpx;color: #5d5d5d;}

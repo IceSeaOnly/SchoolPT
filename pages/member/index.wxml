@@ -1,0 +1,86 @@
+<!--pages/member/index.wxml-->
+<view class="userInfo">
+  <view class="circle">
+    <image src="{{userInfo.avatarUrl}}" />
+  </view>
+  <view class="userName">{{userInfo.nickName}}</view>
+</view>
+
+<navigator url="/pages/orders/index" class="my-order bg-fff">
+  <text class="">我的订单</text>
+  <view class="pull-right">查看全部
+    <image src="/resource/left-b.png"></image>
+  </view>
+</navigator>
+
+<view class="orderInfo bg-fff text-center">
+  <view bindtap="showOrder" data-type="1">
+    <view>
+      <block wx:if="{{data.unpay>=10}}">
+        <text class="notice-1">{{data.unpay}}</text>
+      </block>
+      <block wx:else>
+        <text wx:if="{{data.unpay>0}}" class="notice">{{data.unpay}}</text>
+      </block>
+      <image src="/resource/unpay.png"></image>
+    </view>
+    <view class="orders-status">待付款</view>
+  </view>
+  <view bindtap="showOrder" data-type="2">
+    <view>
+      <block wx:if="{{data.ungroup>=10}}">
+        <text class="notice-1">{{data.ungroup}}</text>
+      </block>
+      <block wx:else>
+        <text wx:if="{{data.ungroup>0}}" class="notice">{{data.ungroup}}</text>
+      </block>
+      <!-- <text wx:if="{{data.ungroup>0}}" class="notice">{{data.ungroup}}</text> -->
+      <image src="/resource/ungroup.png"></image>
+    </view>
+    <view class="orders-status">待成团</view>
+  </view>
+  <view bindtap="showOrder" data-type="3">
+    <view>
+      <block wx:if="{{data.unsend>=10}}">
+        <text class="notice-1">{{data.unsend}}</text>
+      </block>
+      <block wx:else>
+        <text wx:if="{{data.unsend>0}}" class="notice">{{data.unsend}}</text>
+      </block>
+      <!-- <text wx:if="{{data.unsend>0}}" class="notice">{{data.unsend}}</text> -->
+      <image src="/resource/undelivery.png"></image>
+    </view>
+    <view class="orders-status">待发货</view>
+  </view>
+  <view bindtap="showOrder" data-type="4">
+    <view>
+      <block wx:if="{{data.unreceipt>=10}}">
+        <text class="notice-1">{{data.unreceipt}}</text>
+      </block>
+      <block wx:else>
+        <text wx:if="{{data.unreceipt>0}}" class="notice">{{data.unreceipt}}</text>
+      </block>
+      <!-- <text wx:if="{{data.unreceipt>0}}" class="notice">{{data.unreceipt}}</text> -->
+      <image src="/resource/unreceipt.png"></image>
+    </view>
+    <view class="orders-status">待收货</view>
+  </view>
+</view>
+
+
+<view class="my-group mt-20 bg-fff" bindtap="showGroupIndex">
+  <view class="icon">
+    <image src="/resource/group1.png"></image>
+  </view>
+  我的拼团
+  <image src='/resource/left-b.png' class="pull-right"></image>
+</view>
+
+<navigator class="collect bg-fff" url="/pages/member/collection">
+  <view class="icon">
+    <image src="/resource/collection.png"></image>
+  </view>
+  我的收藏
+  <!-- <text class='pull-right'>></text>	 -->
+  <image src='/resource/left-b.png' class="pull-right"></image>
+</navigator>

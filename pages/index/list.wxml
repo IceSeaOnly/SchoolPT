@@ -1,0 +1,17 @@
+<!--pages/index/list.wxml-->
+<import src="/pages/template/loading.wxml"/>
+
+<scroll-view scroll-y="true" class="scroll-view-y" scroll-with-animation="true" scroll-top="{{scrollTop}}" lower-threshold="50" bindscrolltolower="scrolltolower" style="height: {{windowHeight}}px;">
+
+<block wx:for="{{goodsList}}" wx:key="unique">
+<view  class="goods-item bg-fff" bindtap="showGoodsDetail" data-id="{{item.id}}">
+	<image src="{{item.img}}" mode="aspectFill"></image>
+	<view class="goods-title">{{item.name}}</view>
+	<view>
+	  <text class="goods-price">¥{{item.gprice}}</text>
+	  <text class="goods-sale pull-right">已团{{item.saleNum}}{{item.unit}}</text>
+	</view>
+</view>
+</block>
+<template is="loading" data="{{loading:loading}}"/>
+</scroll-view>

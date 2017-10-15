@@ -1,0 +1,101 @@
+<!--pages/orders/detail.wxml-->
+<view class="jumbotron row">
+	<view wx:if="{{orderInfo.orderStatus == '待付款'}}" class="unpay">
+		<view class="order-status">{{orderInfo.orderStatus}}</view>
+		<view class="status-img text-center"><image src="/resource/order-unpay.png"></image></view>
+	</view>
+	<view wx:if="{{orderInfo.orderStatus=='已取消'}}" class="groupfail">
+		<view  class="order-status">订单已取消</view>
+		<view class="status-img text-center"><image src="/resource/order-fail.png"></image></view>
+	</view>
+	<view  wx:if="{{orderInfo.orderStatus=='待成团'}}" class="ungroup">
+		<view class="order-status">{{orderInfo.orderStatus}}</view>
+		<view class="status-img text-center"><image src="/resource/order-ungroup.png"></image></view>
+	</view>
+	<view wx:if="{{orderInfo.orderStatus=='待发货'}}" class="unsend">
+		<view  class="order-status">{{orderInfo.orderStatus}}</view>
+		<view class="status-img text-center"><image src="/resource/order-unsend.png"></image></view>
+	</view>
+	<view wx:if="{{orderInfo.orderStatus=='待收货'}}" class="groupfail">
+		<view  class="order-status">{{orderInfo.orderStatus}}</view>
+		<view class="status-img text-center"><image src="/resource/order-receive.png"></image></view>
+	</view>
+	<view wx:if="{{orderInfo.orderStatus=='已完成'}}" class="groupfail">
+		<view  class="order-status">{{orderInfo.orderStatus}}</view>
+		<view class="status-img text-center"><image src="/resource/order-success.png"></image></view>
+	</view>
+	<view wx:if="{{orderInfo.orderStatus=='拼团失败'}}" class="groupfail">
+		<view  class="order-status">{{orderInfo.orderStatus}}</view>
+		<view class="status-img text-center"><image src="/resource/order-fail.png"></image></view>
+	</view>
+	<view wx:if="{{orderInfo.orderStatus=='已退款'}}" class="groupfail">
+		<view  class="order-status">未成团，退款成功</view>
+		<view class="status-img text-center"><image src="/resource/order-fail.png"></image></view>
+	</view>
+</view>
+
+<view class="address bg-fff">
+	<view class="address-img"><image src="/resource/address.png"></image></view>
+	<view class="address-info">	
+		<view>
+			<text>{{orderInfo.address.userName}}</text>
+			<text>{{orderInfo.address.telNumber}}</text>
+		</view>
+		<view style="margin-top: 24rpx">
+			{{orderInfo.address.provinceName}}
+			{{orderInfo.address.cityName}}
+			{{orderInfo.address.countyName}}
+			{{orderInfo.address.detailInfo}}
+		</view>
+	</view>
+</view>
+
+<view class="ordernum bg-fff pull-left row mt-20">
+	<view>订单编号：{{orderInfo.orderNum}}</view>
+	<!-- <view class="pull-right p-20">{{orderInfo.orderStatus}}</view> -->
+</view>
+<view class="goods-item clearfix">
+	<view class="goods-img pull-left">
+		<image src="{{orderInfo.img}}" mode="aspectFill"></image>
+	</view>
+	<view class="goods-info pull-left">
+		<view class="goods-title">
+			{{orderInfo.name}}
+		</view>
+		<view class="goods-price pull-right">¥{{orderInfo.price}}</view>
+		<view wx:if="{{orderInfo.goodsProp}}" class="goods-prop">
+		<block wx:for="{{orderInfo.goodsProp}}" wx:key="unique">
+			<view>
+				<text>{{item.pname}}</text>:<text>{{item.name}}</text>
+			</view>
+		</block>
+		</view>
+		<view class="goods-num pull-right">x{{orderInfo.goodsNum}}</view>
+	</view>
+</view>
+<view class="user-option clearfix">
+	<!-- <view class="btn">查看团详情</view> -->
+</view>
+	<view class='order-price bg-fff'>
+		<view class="">实付：<text>¥{{orderInfo.totalPrice}}</text></view>
+	</view>
+
+<view class="order-item bg-fff">
+	<view>
+		订单编号：{{orderInfo.orderNum}}<text><!-- 复制 --></text>
+	</view>
+	<view class="mt-20">支付方式：微信</view>
+	<view class="mt-20">下单时间：{{orderInfo.createTime}}</view>
+	<view wx:if="{{orderInfo.groupTime}}">成团时间：{{orderInfo.groupTime}}</view>
+	<view wx:if="{{orderInfo.deliveryTime}}">发货时间：{{orderInfo.deliveryTime}}</view>
+	<view wx:if="{{orderInfo.completeTime}}">成交时间：{{orderInfo.completeTime}}</view>
+	<block wx:if="{{orderInfo.express}}">
+	<view>快递方式：{{orderInfo.express.type}}</view>
+	<view>运单编号：{{orderInfo.express.sn}}</view>
+	</block>
+</view>
+
+<view class="footer">
+	<view wx:if="{{orderInfo.orderStatus=='待付款'}}" bindtap="toPay" class="btn btn-red">去支付</view>
+	<view wx:if="{{orderInfo.orderStatus=='待收货'}}" bindtap="confirmReceipt" class="btn btn-red">确认收货</view>
+</view>

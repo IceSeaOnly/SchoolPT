@@ -1,0 +1,32 @@
+/* pages/orders/detail.wxss */
+.jumbotron{background-color: red;color: #fff;height: 128rpx;padding: 52rpx 72rpx 0 50rpx;}
+.unpay,.ungroup,.unsend{display: inline-block;width: 100%}
+.jumbotron image{width: 138rpx;height: 100rpx;}
+.jumbotron .order-status{display: inline-block;width: 50%}
+.jumbotron .status-img{display: inline-block;width: 50%}
+
+.address{font-size: 24rpx;}
+.address>view{display: inline-block;}
+.address-img image{width: 40rpx;height: 40rpx;}
+.address-img{padding: 0 24rpx;position: relative;top: -30rpx;}
+.address-info{padding: 24rpx 0;}
+
+.ordernum {line-height: 72rpx;font-size: 24rpx;color: #5d5d5d;padding-left: 24rpx;}
+.goods-img{padding: 14rpx 24rpx;}
+.goods-img image {width: 140rpx;height: 140rpx;}
+.goods-info{width: 71%;padding: 20rpx 24rpx 20rpx 0;border-bottom: 1px solid #cccccc;}
+.goods-title{width: 80%;line-height: 29rpx;font-size: 24rpx;display: inline-block;}
+.goods-price{margin-top: 30rpx;}
+.goods-prop{width: 80%;display: inline-block;margin-top: 24rpx;color: #a4a4a4;font-size: 20rpx;}
+.goods-num{color: #ccc;font-size: 28rpx;margin-top: 24rpx;}
+
+.user-option{line-height: 72rpx;text-align: right;}
+.user-option .btn{padding: 0 24rpx;line-height: 52rpx;color: #5d5d5d;font-size: 22rpx;border: 1px solid #a4a4a4;border-radius: 10rpx;display: inline-block;margin-right: 24rpx;background-color: #fff;}
+.order-price{width: 100%;text-align: right;line-height: 72rpx;font-size: 22rpx;}
+.order-price>view{margin-right: 24rpx;}
+.order-price text{color: #fe0000;font-weight: bold;}
+.order-item{padding: 24rpx;line-height: 45rpx;font-size: 22rpx;color: #5d5d5d;margin-top: 1px;}
+
+.footer{position: fixed;bottom: 0;width: 100%;border-top: 1px solid #ccc;background-color: #fff;line-height: 98rpx;text-align: right;}
+.footer .btn{display: inline-block;line-height: 64rpx;padding:0 32rpx;border-radius: 10rpx;margin-right: 24rpx;}
+.footer .btn-red{background-color: #fe0000;color: #fff;}

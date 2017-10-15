@@ -1,0 +1,45 @@
+<!--pages/goods/payfor.wxml-->
+<import src="/pages/template/toast.wxml"/>
+
+<view class="address-item bg-fff" bindtap="getWxAddress">
+<view wx:if="{{address}}" class="address">
+<view class="icon-address"><image class="" src="/resource/address.png"></image></view>
+<view class="address-info">
+	<view>{{address.userName}} {{address.telNumber}}</view>
+	<view class="mt-20">{{address.provinceName}} {{address.cityName}} {{address.countyName}} {{address.detailInfo}}</view>
+</view>
+<image src="/resource/left-b.png" class="left pull-right"></image>
+</view>
+<view wx:else class="no-address">
+<image class="wx-icon" src="/resource/wechat.png"></image>
+<text>一键获取微信地址</text>
+<image src="/resource/left-b.png" class="left pull-right"></image>
+</view>
+</view>
+
+<view class="goods-item">
+	<image src="{{goodsInfo.img}}" mode="aspectFill"></image>
+	<view class="goods-info pull-right">
+		<view class="goods-title">{{goodsInfo.name}}</view>
+		<view class="goods-property">
+			<view wx:for="{{goodsProp}}" wx:key="unique" class="goods-spec">
+				{{item.pname}}：{{item.name}}
+			</view>
+		</view>
+		<view class="goods-price">¥{{goodsPrice}}/件</view>
+	</view>
+	<view class="clearfix"></view>
+	<view class="buy-num row pull-left">
+			<text class="pull-left">购买数量</text>
+			<text class="plus text-center pull-right" bindtap="plus">十</text>
+			<text class="buy-value text-center pull-right">{{goodsNum}}</text>
+			<text class="minus text-center pull-right" bindtap="minus">一</text>
+	</view>
+</view>
+
+<view class="footer row">
+	<view class="">实付款：<text class="goods-price">¥{{goodsPrice*goodsNum}}</text></view>
+	<view class="btn text-center " bindtap="goToPay">立即支付</view>
+</view>
+
+<template is="toast" data="{{toast:toast}}"/>
