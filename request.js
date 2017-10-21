@@ -37,7 +37,7 @@ request.register = function(){
 request.wxRequest = function(obj){
   var code = wx.getStorageSync('access_token')
   wx.request({
-    url: base.url + obj.url,
+    url: base.url + obj.url + '&code=' + code,
     // url: base.url + obj.url + '&wechat_id=' + base.wechat_id + '&code=' + code,
     data:obj.data,
     method:obj.method,
