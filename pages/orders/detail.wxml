@@ -1,6 +1,6 @@
 <!--pages/orders/detail.wxml-->
 <view class="jumbotron row">
-	<view wx:if="{{orderInfo.orderStatus == '待付款'}}" class="unpay">
+	<view wx:if="{{orderInfo.orderStatus == '待付款' || orderInfo.orderStatus == '待支付'}}" class="unpay">
 		<view class="order-status">{{orderInfo.orderStatus}}</view>
 		<view class="status-img text-center"><image src="/resource/order-unpay.png"></image></view>
 	</view>
@@ -8,15 +8,15 @@
 		<view  class="order-status">订单已取消</view>
 		<view class="status-img text-center"><image src="/resource/order-fail.png"></image></view>
 	</view>
-	<view  wx:if="{{orderInfo.orderStatus=='待成团'}}" class="ungroup">
+	<view  wx:if="{{orderInfo.orderStatus=='待成团'||orderInfo.orderStatus=='已支付待成团'}}" class="ungroup">
 		<view class="order-status">{{orderInfo.orderStatus}}</view>
 		<view class="status-img text-center"><image src="/resource/order-ungroup.png"></image></view>
 	</view>
-	<view wx:if="{{orderInfo.orderStatus=='待发货'}}" class="unsend">
+	<view wx:if="{{orderInfo.orderStatus=='待发货'||orderInfo.orderStatus=='已成团待发货'}}" class="unsend">
 		<view  class="order-status">{{orderInfo.orderStatus}}</view>
 		<view class="status-img text-center"><image src="/resource/order-unsend.png"></image></view>
 	</view>
-	<view wx:if="{{orderInfo.orderStatus=='待收货'}}" class="groupfail">
+	<view wx:if="{{orderInfo.orderStatus=='待收货'||orderInfo.orderStatus=='配送中'||orderInfo.orderStatus=='重新配送中'}}" class="groupfail">
 		<view  class="order-status">{{orderInfo.orderStatus}}</view>
 		<view class="status-img text-center"><image src="/resource/order-receive.png"></image></view>
 	</view>
@@ -62,7 +62,7 @@
 		<view class="goods-title">
 			{{orderInfo.name}}
 		</view>
-		<view class="goods-price pull-right">¥{{orderInfo.price}}</view>
+		<view class="goods-price pull-right">¥{{orderInfo.gprice}}</view>
 		<view wx:if="{{orderInfo.goodsProp}}" class="goods-prop">
 		<block wx:for="{{orderInfo.goodsProp}}" wx:key="unique">
 			<view>
@@ -96,6 +96,6 @@
 </view>
 
 <view class="footer">
-	<view wx:if="{{orderInfo.orderStatus=='待付款'}}" bindtap="toPay" class="btn btn-red">去支付</view>
-	<view wx:if="{{orderInfo.orderStatus=='待收货'}}" bindtap="confirmReceipt" class="btn btn-red">确认收货</view>
+	<view wx:if="{{orderInfo.orderStatus=='待付款'|| orderInfo.orderStatus == '待支付'}}" bindtap="toPay" class="btn btn-red">去支付</view>
+	<view wx:if="{{orderInfo.orderStatus=='待收货'||orderInfo.orderStatus=='配送中'||orderInfo.orderStatus=='重新配送中'}}" bindtap="confirmReceipt" class="btn btn-red">确认收货</view>
 </view>
