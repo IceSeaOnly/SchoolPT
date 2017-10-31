@@ -47,6 +47,9 @@ request.wxRequest = function(obj){
       if(res.statusCode ==200 &&res.data.code == 'success'){
         typeof(obj.success)=='function' && obj.success(res.data.data);
       }
+      if (res.statusCode == 200 && res.data.code != 'success') {
+        typeof (obj.failed) == 'function' && obj.failed(res.data); //传入的包括外层参数
+      }
     }
   })
 

@@ -56,14 +56,13 @@ Page({
               }else{
                 app.redirect('orders/index','id=3')
               }
-             },
-             'fail':function(res){
-              app.redirect('orders/index','id=1')
-              console.log(res)
              }
           })
           }
         })
+      },
+      failed:function(res){
+        app.showToast(self, res.msg);
       }
     })
   },
