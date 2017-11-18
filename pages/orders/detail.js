@@ -32,10 +32,14 @@ Page({
         'signType': 'MD5',
         'paySign': res.paySign,
         'success':function(res){
+          console.log('success' + JSON.stringify(res))
          self.showDataInfo()
         },
         'fail':function(res){
-         console.log(res)
+          console.log('fail' + JSON.stringify(res))
+        },
+        'complete': function (res) {
+          console.log('complete:' + JSON.stringify(res))
         }
      })
      }

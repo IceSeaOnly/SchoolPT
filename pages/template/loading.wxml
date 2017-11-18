@@ -5,7 +5,7 @@
 <!-- <view class="">正在加载</view> -->
 <!-- </block> -->
 <!-- <block wx:else> -->
-<view class="no-data">——————— 够了！这是我的底线 ———————</view>
+<view class="no-data">——————— 到底了,少年 ———————</view>
 <!-- </block> -->
 </view>
 </template>

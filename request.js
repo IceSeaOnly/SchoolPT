@@ -43,7 +43,7 @@ request.wxRequest = function(obj){
     method:obj.method,
     header:{"Content-Type": "application/x-www-form-urlencoded"},
     success:function(res){
-      console.log(res)
+      //console.log(res)
       if(res.statusCode ==200 &&res.data.code == 'success'){
         typeof(obj.success)=='function' && obj.success(res.data.data);
       }
