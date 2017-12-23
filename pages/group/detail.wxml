@@ -3,7 +3,7 @@
 <template is="toast" data="{{toast:toast}}" />
 
 <view wx:if="{{groupInfo.groupStatus=='拼团中'}}" class="grouping">
-  <block wx:if="{{groupInfo.isSelf}}">
+  <block wx:if="{{groupInfo.self}}">
     <view class="group-goods bg-fff">
       <image src="{{groupInfo.img}}" mode="aspectFill"></image>
       <view class="goods-info pull-right">
@@ -79,7 +79,7 @@
 
 <!-- end grouping -->
 <view wx:if="{{groupInfo.groupStatus=='拼团成功'}}" class="grouped">
-  <block wx:if="{{groupInfo.isSelf}}">
+  <block wx:if="{{groupInfo.self}}">
     <view class="notice text-center bg-fff">
       <view class="warn-primary">拼团成功</view>
       <view class="warn-notice">商家正在努力发货，请耐心等待！</view>
@@ -129,7 +129,10 @@
       </block>
     </view>
     <view class="text-center">团已满</view>
-    <button class="btn" bindtap="showGoodsDetail" data-id="{{groupInfo.gid}}">再次一键开团</button>
+    <view style="padding: 30rpx 24rpx;">
+      <button class="btn" bindtap="showGoodsDetail" data-id="{{groupInfo.gid}}">再次一键开团</button>
+    </view>
+
   </block>
 </view>
 

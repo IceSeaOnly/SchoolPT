@@ -4,17 +4,14 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"minified": true
+		"minified": true,
+		"newFeature": true
 	},
-	"compileType": "weapp",
+	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
 	"appid": "wx06c192a75a81e27a",
 	"projectname": "%E6%A0%A1%E5%9B%AD%E6%8B%BC%E5%9B%A2",
 	"condition": {
-		"weapp": {
-			"current": -1,
-			"list": []
-		},
 		"search": {
 			"current": -1,
 			"list": []
@@ -22,6 +19,17 @@
 		"conversation": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "团详细-参团",
+					"pathName": "pages/group/detail",
+					"query": "id=0a2bb2176e4525950542109188"
+				}
+			]
 		}
 	}
 }
