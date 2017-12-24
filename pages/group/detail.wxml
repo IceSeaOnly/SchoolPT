@@ -128,7 +128,7 @@
         <image src="{{item.avatarUrl}}" mode="aspectFill"></image>
       </block>
     </view>
-    <view class="text-center">团已满</view>
+    <view class="text-center group-fail-text">团已满</view>
     <view style="padding: 30rpx 24rpx;">
       <button class="btn" bindtap="showGoodsDetail" data-id="{{groupInfo.gid}}">再次一键开团</button>
     </view>

@@ -12,7 +12,7 @@
 		<view class="order-status">{{orderInfo.orderStatus}}</view>
 		<view class="status-img text-center"><image src="/resource/order-ungroup.png"></image></view>
 	</view>
-	<view wx:if="{{orderInfo.orderStatus=='待发货'||orderInfo.orderStatus=='已成团待发货'}}" class="unsend">
+	<view wx:if="{{orderInfo.orderStatus=='待发货'||orderInfo.orderStatus=='已成团待发货'||orderInfo.orderStatus=='已支付待发货'}}" class="unsend">
 		<view  class="order-status">{{orderInfo.orderStatus}}</view>
 		<view class="status-img text-center"><image src="/resource/order-unsend.png"></image></view>
 	</view>

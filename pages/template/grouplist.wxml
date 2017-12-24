@@ -14,7 +14,7 @@
 	</view>
 	<view class="user-option bg-fff pull-right">
 		<view class="pull-right btn" bindtap="showOrderInfo" data-id="{{item.oid}}">查看订单详情</view>
-		<view class="pull-right btn" bindtap="showGroupInfo" data-id="{{item.oid}}">查看团详情</view>
+		<view class="pull-right btn" bindtap="showGroupInfo" data-id="{{item.orderNum}}">查看团详情</view>
 	</view>
 	<view class="clearfix"></view>
 </block>
